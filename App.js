@@ -1,19 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import{createSwitchNavigator,createAppContainer} from 'react-navigation';
+import loginPage from "./app/viwe/loginPage";
+import welcome from "./app/viwe/welcomePage";
+import ListScreen from "./app/viwe/ListScreen";
+import buttonNavigator from "./app/viwe/buttonNavigator";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const RootApp = createSwitchNavigator(
+    {
+        Home:welcome,
+        Login:loginPage,
+        List:ListScreen,
+        Button:buttonNavigator
+    },
+    {
+        initialRouteName: 'Button',
+        defaultNavigationOptions: {
+            title: 'My First App'
+        }
+    }
+)
+export default createAppContainer(RootApp);
