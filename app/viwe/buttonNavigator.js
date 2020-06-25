@@ -21,6 +21,22 @@ const buttonNavigator=(props)=>{
             >
                <Text>Click For List View</Text>
             </TouchableOpacity>
+
+            <Button
+                style={styles.button}
+                title={"Image Page"}
+                onPress={() =>props.navigation.navigate('Imageview') }
+            />
+            <Button
+                style={styles.button}
+                title={"Count App Page"}
+                onPress={() =>props.navigation.navigate('Count') }
+            />
+            <Button
+                style={styles.button}
+                title={"Colour Block Generate"}
+                onPress={() =>props.navigation.navigate('Colour') }
+            />
         </View>
     );
 }

@@ -1,21 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {SafeAreaView} from "react-native-web";
+import { Text, SafeAreaView } from 'react-native';
 
-const loginPage=()=> {
+const loginPage = () => {
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView>
             <Text>Madushanka!</Text>
         </SafeAreaView>
     );
 }
-
-
-
-const styles = StyleSheet.create({
-    container: {
-
-    },
-});
 
 export default loginPage;
