@@ -42,6 +42,11 @@ const buttonNavigator=(props)=>{
                 title={"Colour Creater"}
                 onPress={() =>props.navigation.navigate('Create') }
             />
+            <Button
+                style={styles.button}
+                title={"Input Change"}
+                onPress={() =>props.navigation.navigate('Input') }
+            />
         </View>
     );
 }
