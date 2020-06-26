@@ -2,6 +2,9 @@ import React,{useState} from 'react';
 import {StyleSheet,View, Button, Text} from 'react-native';
 
 const Count = () => {
+
+
+
 const [number,setNumber] =useState(0);
     return (
         <View style={style.container}>

@@ -37,6 +37,11 @@ const buttonNavigator=(props)=>{
                 title={"Colour Block Generate"}
                 onPress={() =>props.navigation.navigate('Colour') }
             />
+            <Button
+                style={styles.button}
+                title={"Colour Creater"}
+                onPress={() =>props.navigation.navigate('Create') }
+            />
         </View>
     );
 }

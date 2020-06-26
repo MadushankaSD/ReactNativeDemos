@@ -7,6 +7,7 @@ import buttonNavigator from "./app/viwe/buttonNavigator";
 import home from "./app/viwe/Home";
 import Count from "./app/viwe/Counter";
 import colourChange from "./app/viwe/colourChange";
+import ColourCreater from "./app/viwe/colourCreater";
 
 const RootApp = createSwitchNavigator(
     {
@@ -16,7 +17,8 @@ const RootApp = createSwitchNavigator(
         Button:buttonNavigator,
         Imageview:home,
         Count:Count,
-        Colour:colourChange
+        Colour:colourChange,
+        Create:ColourCreater
     },
     {
         initialRouteName: 'Button',
