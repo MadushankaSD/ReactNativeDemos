@@ -1,29 +1,23 @@
-import React,{useState} from 'react';
-import {View, StyleSheet, Text, SafeAreaView, Button, FlatList} from 'react-native';
+import React,{useReducer} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 import ColorTemplate from "../component/colorTemplate";
 
+const reducer= (state,action)=>{
+    switch (action.type) {
+        case 'red':
+           return  state.red+action.payload>255||state.red+action.payload<0? state : {...state ,red:state.red+action.payload}
+        case 'green':
+            return state.green+action.payload>255||state.green+action.payload<0? state : {...state ,green:state.green+action.payload}
+        case 'blue':
+            return state.blue+action.payload>255||state.blue+action.payload<0? state : {...state ,blue:state.blue+action.payload}
+        default:
+            return state;
+    }
+}
 
 const ColourCreater =()=> {
 
-    const [red,setRed]=useState(0);
-    const [green,setGreen]=useState(0);
-    const [blue,setBlue]=useState(0);
-
-    const setColour=(colour,increment)=>{
-        switch (colour) {
-            case 'red':
-                red + increment > 255 || red + increment < 0 ? null : setRed(red+increment);
-                break;
-            case 'green':
-                green + increment > 255 || green + increment < 0 ? null : setGreen(green+increment);
-                break;
-            case 'blue':
-                blue + increment > 255 || blue + increment < 0 ? null : setBlue(blue+increment);
-                break;
-            default:
-                break;
-        }
-    }
+    const [state,dispatch]=useReducer(reducer,{red:0,green:0,blue:0})
 
     const increase = 10;
 
@@ -31,19 +25,19 @@ const ColourCreater =()=> {
         <View style={style.textStyle}>
             <Text >Create Color</Text>
             <ColorTemplate colour="Red"
-                           onIncrease={()=>setColour('red',increase)}
-                           onDecrease={()=>setColour('red',-1*increase)}
+                           onIncrease={()=>dispatch({type:'red',payload:increase})}
+                           onDecrease={()=>dispatch({type:'red',payload:-1*increase})}
                             />
             <ColorTemplate colour="Green"
-                           onIncrease={()=>setColour('green',increase)}
-                           onDecrease={()=>setColour('green',-increase)}
+                           onIncrease={()=>dispatch({type:'green',payload:increase})}
+                           onDecrease={()=>dispatch({type:'green',payload:-1*increase})}
             />
             <ColorTemplate colour="Blue"
-                           onIncrease={()=>setColour('blue',increase)}
-                           onDecrease={()=>setColour('blue',-increase)}
+                           onIncrease={()=>dispatch({type:'blue',payload:increase})}
+                           onDecrease={()=>dispatch({type:'blue',payload:-1*increase})}
             />
 
-            <View style={{width: 100,height:100,backgroundColor:`rgb(${red},${green},${blue})`}}/>
+            <View style={{width: 100,height:100,backgroundColor:`rgb(${state.red},${state.green},${state.blue})`}}/>
         </View>
     );
 }
